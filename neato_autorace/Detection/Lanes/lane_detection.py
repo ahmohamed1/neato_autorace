@@ -21,12 +21,14 @@ def detect_lane(img):
 
     distance, curvature = fetch_info_and_dispaly(Mid_ROI_mask, extended_mid_lane, extended_outer_lane, img_cropped, offset_correction)
 
-    cv2.imshow('Mid_edge_ROI', Mid_edge_ROI)
-    cv2.imshow('Mid_ROI_mask', Mid_ROI_mask)
-    cv2.imshow('Outer_edge_ROI', Outer_edge_ROI)
-    cv2.imshow('OuterLane_TwoSide', OuterLane_TwoSide)
-    cv2.imshow('estimated_midlane', estimated_midlane)
-    cv2.imshow('extended_outer_lane', extended_outer_lane)
+    # cv2.imshow('Mid_edge_ROI', Mid_edge_ROI)
+    # cv2.imshow('Mid_ROI_mask', Mid_ROI_mask)
+    # cv2.imshow('Outer_edge_ROI', Outer_edge_ROI)
+    # cv2.imshow('OuterLane_TwoSide', OuterLane_TwoSide)
+    # cv2.imshow('estimated_midlane', estimated_midlane)
+    # cv2.imshow('extended_outer_lane', extended_outer_lane)
     cv2.imshow('outer_lane_on_side', outer_lane_on_side)
     cv2.imshow('extended_mid_lane', extended_mid_lane)
     cv2.waitKey(1)
+
+    return distance, curvature 
