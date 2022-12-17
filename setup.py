@@ -5,14 +5,18 @@ from glob import glob
 package_name = 'neato_autorace'
 
 config_module = "neato_autorace/config"
-data_module ="neato_autorace/data"
-
+config_main_module = "config"
 detection_module ="neato_autorace/Detection"
+detection_lanes_module ="neato_autorace/Detection/Lanes"
 
 setup(
     name=package_name,
     version='0.0.0',
-    packages=[package_name],
+    packages=[package_name, 
+              detection_lanes_module, 
+              detection_module, config_module,
+              config_main_module],
+              
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),

@@ -47,8 +47,8 @@ loopCount=0
 Resized_width = 320#320#240#640#320 # Control Parameter
 Resized_height = 240#240#180#480#240
 
-in_q = cv2.VideoWriter( os.path.abspath("data/Output/in_new.avi") , cv2.VideoWriter_fourcc('M','J','P','G'), 30, (Resized_width,Resized_height))
-out  = cv2.VideoWriter( os.path.abspath("data/Output/out_new.avi") , cv2.VideoWriter_fourcc('M','J','P','G'), 30, (Resized_width,Resized_height))
+# in_q = cv2.VideoWriter( os.path.abspath("data/Output/in_new.avi") , cv2.VideoWriter_fourcc('M','J','P','G'), 30, (Resized_width,Resized_height))
+# out  = cv2.VideoWriter( os.path.abspath("data/Output/out_new.avi") , cv2.VideoWriter_fourcc('M','J','P','G'), 30, (Resized_width,Resized_height))
 
 if debugging:
     waitTime = 1
@@ -56,11 +56,11 @@ else:
     waitTime = 1
 
 #============================================ Paramters for Lane Detection =======================================
-Ref_imgWidth = 1920
-Ref_imgHeight = 1080
+# Ref_imgWidth = 1920
+# Ref_imgHeight = 1080
 
-#Ref_imgWidth = 640
-#Ref_imgHeight = 480
+Ref_imgWidth = 640
+Ref_imgHeight = 480
 
 Frame_pixels = Ref_imgWidth * Ref_imgHeight
 
@@ -72,5 +72,5 @@ minArea_resized = int(Resize_Framepixels * Lane_Extraction_minArea_per)
 BWContourOpen_speed_MaxDist_per = 500 / Ref_imgHeight
 MaxDist_resized = int(Resized_height * BWContourOpen_speed_MaxDist_per)
 
-CropHeight = 650 # Required in Camera mounted on top of car 640p
+CropHeight = 100 # Required in Camera mounted on top of car 640p
 CropHeight_resized = int( (CropHeight / Ref_imgHeight ) * Resized_height )

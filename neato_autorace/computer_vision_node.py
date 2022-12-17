@@ -5,7 +5,7 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image 
 import rclpy 
 
-# from .Drive_Bot import Car
+from .Drive_Bot import Car
 
 class Video_feed_in(Node):
     def __init__(self):
@@ -14,7 +14,7 @@ class Video_feed_in(Node):
         self.subscriber = self.create_subscription(Image,'/image_raw',self.process_data,10)
         self.publisher = self.create_publisher(Twist, '/cmd_vel', 40)
         timer_period = 0.5
-        # self.timer = self.create_timer(timer_period, self.send_cmd_vel)
+        self.timer = self.create_timer(timer_period, self.send_cmd_vel)
 
         self.velocity = Twist()
         self.bridge   = CvBridge() # converting ros images to opencv data
@@ -27,10 +27,11 @@ class Video_feed_in(Node):
 
         frame = self.bridge.imgmsg_to_cv2(data,'bgr8') # performing conversion
 
-        # Angle,Speed,img = self.Car.driveCar(frame)
+        Angle,Speed,img = 0.0, 0.0, frame
+        self.Car.drive_car(frame)
 
-        # self.velocity.angular.z = Angle
-        # self.velocity.linear.x = Speed      
+        self.velocity.angular.z = Angle
+        self.velocity.linear.x = Speed      
 
         # cv2.imshow("Frame",frame)
         # cv2.waitKey(1)
